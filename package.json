@@ -3,6 +3,10 @@
   "displayName": "termagotchi",
   "description": "TermaGotchi is a terminal styled pet that feeds of of the user typing. if you don't type enough within a certain timespan it dies",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tom-De-Jong/TermaGotchi"
+  },
   "engines": {
     "vscode": "^1.109.0"
   },

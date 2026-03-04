@@ -259,24 +259,30 @@ function activate(context) {
         const styleUri = webview.asWebviewUri(
             vscode.Uri.joinPath(context.extensionUri, 'style.css')
         );
+        const toWebviewSrc = function (fileName) {
+            return webview
+                .asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', fileName))
+                .toString();
+        };
+
         const petGifs = {
             main: {
-                t25: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'main-25.gif')),
-                t50: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'main-50.gif')),
-                t75: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'main-75.gif')),
-                t100: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'main-100.gif'))
+                t25: toWebviewSrc('main-25.gif'),
+                t50: toWebviewSrc('main-50.gif'),
+                t75: toWebviewSrc('main-75.gif'),
+                t100: toWebviewSrc('main-100.gif')
             },
             commit: {
-                t25: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'commit-25.gif')),
-                t50: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'commit-50.gif')),
-                t75: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'commit-75.gif')),
-                t100: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'commit-100.gif'))
+                t25: toWebviewSrc('commit-25.gif'),
+                t50: toWebviewSrc('commit-50.gif'),
+                t75: toWebviewSrc('commit-75.gif'),
+                t100: toWebviewSrc('commit-100.gif')
             },
             paste: {
-                t25: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'paste-25.gif')),
-                t50: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'paste-50.gif')),
-                t75: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'paste-75.gif')),
-                t100: webview.asWebviewUri(vscode.Uri.joinPath(context.extensionUri, 'media', 'gifs', 'paste-100.gif'))
+                t25: toWebviewSrc('paste-25.gif'),
+                t50: toWebviewSrc('paste-50.gif'),
+                t75: toWebviewSrc('paste-75.gif'),
+                t100: toWebviewSrc('paste-100.gif')
             }
         };
 
@@ -311,7 +317,7 @@ function activate(context) {
             </div>
             <h1 id="petTitle" class="petTitle"></h1>
             <div class="petImageWrap">
-                <img id="petImage" class="petImage" src="${petGifs.main.t25}" alt="pet">
+                <img id="petImage" class="petImage" src="${petGifs.main.t100}" alt="pet">
             </div>
             <div class="bars">
                 <div class="barRow">
@@ -367,13 +373,13 @@ function activate(context) {
 
         function pickGif(petId, health) {
             const tiers = gifTiers[petId] || gifTiers.main;
-            if (health >= 100) {
+            if (health >= 75) {
                 return tiers.t100;
             }
-            if (health >= 75) {
+            if (health >= 50) {
                 return tiers.t75;
             }
-            if (health >= 50) {
+            if (health >= 25) {
                 return tiers.t50;
             }
             return tiers.t25;
