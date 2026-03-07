@@ -1,5 +1,7 @@
 # termagotchi README
 
+## NOTE!!! (The typing for the main pet is slow so you have to type alot before the bar goes up!)
+
 Welcome to my little project and thank you for reading this!
 
 Termagotchi is a terminal style vscode extension based on a tamagotchi. You start with a screen where you choose the name of your main pet. after you start you see an overview with health and an energy bar. theres also an arrow pointing left and right. When you click those you go to the next pet because your main pet is not the only one! theres commit crab and paste pal. The names already tell you what they do. Whenever you paste the paste pal gets fed and whenever you commit. commit crab gets fed commit grab has a bar that fully drains in exactly one hour and paste crabs bar fully drains in 30 minutes.
